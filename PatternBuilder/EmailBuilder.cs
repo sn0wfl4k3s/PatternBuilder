@@ -1,40 +1,28 @@
 ﻿namespace PatternBuilder;
 
-public class EmailBuilder : IBuilder<Email>
+public class EmailBuilder : Builder<Email>
 {
-    private readonly Email _email;
-
-    public EmailBuilder()
+    public EmailBuilder AddBody(string content)
     {
-        _email = new();
-    }
-
-    public EmailBuilder Body(string content)
-    {
-        _email.Body = content;
+        _instance.Body = content;
         return this;
     }
 
-    public Email Build()
+    public EmailBuilder AddFrom(string address)
     {
-        return _email;
-    }
-
-    public EmailBuilder From(string address)
-    {
-        _email.From = address;
+        _instance.From = address;
         return this;
     }
 
-    public EmailBuilder Subject(string title)
+    public EmailBuilder AddSubject(string title)
     {
-        _email.Subject = title;
+        _instance.Subject = title;
         return this;
     }
 
-    public EmailBuilder To(string address)
+    public EmailBuilder AddTo(string address)
     {
-        _email.To = address;
+        _instance.To = address;
         return this;
     }
 }
